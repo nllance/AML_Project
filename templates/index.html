@@ -1,0 +1,70 @@
+<!-- Selection page where user chooses the document type -->
+<!-- The selected option is stored in local storage and the user is redirected to the upload.html page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to the Application</title>
+<style>
+   /* Styling for the page */
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    padding: 15px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    margin-bottom: 7px;
+    cursor: pointer;
+  }
+  li:hover {
+    background-color: #ddd;
+  }
+  button {
+    margin-bottom: 10px;
+  }
+  .selected {
+    background-color: #4CAF50;
+    color: white;
+  }
+</style>
+</head>
+
+<body>
+    <h1>Welcome to the Application</h1>
+    <p>Select an option:</p>
+    <button onclick="selectOption(this)">Passport</button>
+    <button onclick="selectOption(this)">Driver's License</button>
+    <button onclick="selectOption(this)">National Identity Card</button>
+    <br><br><br>
+    <button onclick="submit()">Submit</button>
+
+<script>
+    let selectedButton;
+  
+    function selectOption(button) {
+        if (selectedButton) {
+            selectedButton.classList.remove('selected');
+        }
+        button.classList.add('selected');
+        selectedButton = button;
+    }
+
+    function submit() {
+        if (selectedButton) {
+            localStorage.setItem('selectedDocumentType', selectedButton.innerText);
+            window.location.href = '/upload';
+        } else {
+            alert('Please select a document type.');
+        }
+    }
+</script>
+</body>
+</html>

@@ -2,7 +2,7 @@ import sqlite3
 from sqlite3 import Error
 import os
 
-# Import the required modules and set the database file name
+# import the required modules and set the database file name
 DB_FILE = 'data.db'
 
 # Function to create a connection to the SQLite database
@@ -24,9 +24,11 @@ def create_table():
                 '''
                 CREATE TABLE IF NOT EXISTS user_data (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    phone TEXT NOT NULL,
-                    address TEXT NOT NULL,
                     passport TEXT NOT NULL,
+                    name TEXT NOT NULL,
+                    dob TEXT NOT NULL,
+                    gender TEXT NOT NULL,
+                    address TEXT NOT NULL,
                     image_path TEXT NOT NULL,
                     extracted_text TEXT NOT NULL
                 );
